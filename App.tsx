@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Plus, Search, Calendar, CheckCircle2, Trash2, Edit2, Zap, CalendarDays, ArrowRight, Library, AlertCircle, Sparkles } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import TopicModal from './components/TopicModal';
+import ReferenceLibrary from './components/ReferenceLibrary';
 import { getTopics, addTopic, updateTopicStatus, deleteTopic, updateTopicDetails } from './lib/supabase';
 import { Topic, SeriesType, SERIES_LABELS, SERIES_COLORS, StatusType } from './types';
 
@@ -332,6 +333,9 @@ function App() {
                      <div className="border-t border-dashed border-gray-200"></div>
                      <WeeklyCalendar title="下周待发" startDate={planData.nextWeekStart} topics={planData.allActiveTopics} isCurrent={false} />
                 </div>
+            )}
+            {currentView === 'reference' && (
+                <ReferenceLibrary />
             )}
         </div>
         {loading && <div className="absolute inset-0 bg-paper/80 backdrop-blur-sm z-50 flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-500"></div></div>}

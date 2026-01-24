@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Library, CalendarDays, PenTool, Settings } from 'lucide-react';
+import { Library, CalendarDays, PenTool, Settings, BookMarked } from 'lucide-react';
 import SettingsModal from './SettingsModal';
 
 interface SidebarProps {
@@ -13,6 +13,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, onChangeView }) => {
   const menuItems = [
     { id: 'library', label: '选题灵感库', icon: Library, desc: '分类管理备选选题' },
     { id: 'plan', label: '发布计划表', icon: CalendarDays, desc: '每周发布排期管理' },
+    { id: 'reference', label: '优质笔记参考库', icon: BookMarked, desc: '学习优质案例' },
   ];
 
   return (
