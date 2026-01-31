@@ -300,6 +300,7 @@ function App() {
     <div className="h-screen bg-paper flex font-sans text-gray-900 overflow-hidden">
       <Sidebar currentView={currentView} onChangeView={setCurrentView} />
       <main className="flex-1 ml-0 md:ml-64 flex flex-col h-screen relative">
+        {currentView !== 'reference' && (
         <header className="px-8 py-6 bg-paper/90 backdrop-blur-md z-10 border-b border-gray-100/50 flex-shrink-0">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
@@ -318,6 +319,7 @@ function App() {
             </div>
             </div>
         </header>
+        )}
         <div className="flex-1 overflow-hidden p-8 pt-6 flex flex-col relative">
             {errorMsg && <div className="mb-4 p-3 bg-amber-50 border border-amber-200 text-amber-700 rounded-xl flex items-center gap-2 text-sm"><AlertCircle size={16} />{errorMsg}</div>}
             {currentView === 'library' && (
