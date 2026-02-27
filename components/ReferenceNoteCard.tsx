@@ -42,9 +42,11 @@ const ReferenceNoteCard: React.FC<ReferenceNoteCardProps> = ({ note, onDelete })
             src={note.cover_url}
             alt={note.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            referrerPolicy="no-referrer"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
+              // target.style.display = 'none';
+              console.error('Image load failed for:', note.cover_url);
             }}
           />
         ) : (

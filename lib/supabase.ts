@@ -31,7 +31,8 @@ export const saveCredentials = (url: string, key: string) => {
 let supabase: SupabaseClient | null = null;
 const { url, key } = getStoredCredentials();
 
-const isKeyValid = key.length > 20 && key.includes('.');
+// 兼容新版 sb_publishable_... 格式和旧版 JWT 格式
+const isKeyValid = key.length > 20;
 
 if (url && isKeyValid) {
   try {
