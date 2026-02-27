@@ -47,11 +47,13 @@ if (url && isKeyValid) {
 export const getTopics = async (): Promise<Topic[]> => {
   if (supabase) {
     try {
+        console.log("Attempting cloud fetch with supabase...");
         const { data, error } = await supabase.from('topics').select('*').order('created_at', { ascending: false });
+        console.log("Cloud fetch result:", { data, error });
         if (!error && data) return data as Topic[];
         if (error) throw error;
-    } catch (e) {
-        console.error("Cloud fetch failed, using local storage:", e);
+    } catch (e: any) {
+        console.error("Cloud fetch failed, using local storage:", e?.message || e);
     }
   }
   const local = localStorage.getItem(LOCAL_DATA_KEY);
